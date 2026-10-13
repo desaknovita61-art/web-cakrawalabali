@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT CAKRAWALA BALI - Penempatan Tenaga Kerja Perhotelan & Hospitality</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts: Plus Jakarta Sans & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            navy: '#0b2545',
+                            teal: '#134e4a',
+                            gold: '#d97706',
+                            goldlight: '#fef3c7',
+                            sand: '#f8fafc',
+                            ocean: '#0284c7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(11, 37, 69, 0.88) 0%, rgba(19, 78, 74, 0.82) 100%);
+        }
+        .gold-border-gradient {
+            border-image: linear-gradient(to right, #d97706, #f59e0b) 1;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-gold selection:text-white">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 w-full z-40 glass-nav border-b border-slate-200/80 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-brand-navy to-brand-teal flex items-center justify-center text-amber-400 font-bold text-xl shadow-md group-hover:scale-105 transition">
+                    <i class="fa-solid fa-compass"></i>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-serif font-bold text-xl text-brand-navy leading-none tracking-tight">CAKRAWALA BALI</span>
+                    <span class="text-[10px] tracking-widest text-brand-gold uppercase font-semibold mt-1">Hospitality Manpower Specialist</span>
+                </div>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-slate-700 text-sm">
+                <a href="#beranda" class="hover:text-brand-gold transition py-2">Beranda</a>
+                <a href="#tentang" class="hover:text-brand-gold transition py-2">Tentang Kami</a>
+                <a href="#layanan" class="hover:text-brand-gold transition py-2">Layanan</a>
+                <a href="#spesialisasi" class="hover:text-brand-gold transition py-2">Divisi Staff</a>
+                <a href="#lowongan" class="hover:text-brand-gold transition py-2">Lowongan Kerja</a>
+                <a href="#kontak" class="hover:text-brand-gold transition py-2">Kontak</a>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="hidden sm:flex items-center gap-3">
+                <button onclick="openApplyModal('General Placement')" class="px-5 py-2.5 rounded-xl border-2 border-brand-gold text-brand-gold hover:bg-brand-gold hover:text-white font-semibold text-sm transition shadow-sm">
+                    <i class="fa-solid fa-file-arrow-up mr-1.5"></i> Kirim CV
+                </button>
+                <a href="https://wa.me/6281234567890?text=Halo%20PT%20Cakrawala%20Bali,%20saya%20ingin%20konsultasi%20mengenai%20penempatan%20tenaga%20kerja" target="_blank" class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-navy to-brand-teal text-white font-semibold text-sm hover:opacity-95 transition shadow-md hover:shadow-lg">
+                    <i class="fa-brands fa-whatsapp mr-1.5 text-emerald-400"></i> Hubungi Kami
+                </a>
+            </div>
+
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menuBtn" class="lg:hidden p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition focus:outline-none">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobileMenu" class="hidden lg:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3 font-medium text-slate-700">
+            <a href="#beranda" class="block py-2 hover:text-brand-gold">Beranda</a>
+            <a href="#tentang" class="block py-2 hover:text-brand-gold">Tentang Kami</a>
+            <a href="#layanan" class="block py-2 hover:text-brand-gold">Layanan Kami</a>
+            <a href="#spesialisasi" class="block py-2 hover:text-brand-gold">Divisi Staff</a>
+            <a href="#lowongan" class="block py-2 hover:text-brand-gold">Lowongan Kerja</a>
+            <a href="#kontak" class="block py-2 hover:text-brand-gold">Kontak</a>
+            <div class="pt-3 border-t border-slate-100 flex flex-col gap-2">
+                <button onclick="openApplyModal('General Placement')" class="w-full py-2.5 rounded-xl border border-brand-gold text-brand-gold font-semibold text-center">
+                    Kirim CV Pelamar
+                </button>
+                <a href="https://wa.me/6281234567890" target="_blank" class="w-full py-2.5 rounded-xl bg-brand-navy text-white font-semibold text-center">
+                    WhatsApp Hotline
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section id="beranda" class="relative pt-28 pb-20 md:pt-40 md:pb-32 overflow-hidden flex items-center min-h-[90vh]">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1920&q=80" alt="Resort Mewah Bali" class="w-full h-full object-cover">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <div class="max-w-3xl">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs sm:text-sm font-semibold mb-6 backdrop-blur-sm">
+                    <i class="fa-solid fa-award text-amber-400"></i> Mitra Rekrutmen Perhotelan Bintang 5 Bali
+                </div>
+                
+                <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 tracking-tight">
+                    Mitra Terpercaya Penempatan Tenaga Kerja <span class="text-amber-400 italic">Perhotelan & Hospitality</span> di Bali
+                </h1>
+                
+                <p class="text-slate-200 text-base sm:text-lg mb-8 leading-relaxed font-light">
+                    PT CAKRAWALA BALI menjembatani talenta profesional hospitality berstandar internasional dengan hotel mewah, villa eksklusif, resort bintang lima, dan restoran ternama di seluruh Bali.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#lowongan" class="px-8 py-4 rounded-xl bg-brand-gold hover:bg-amber-600 text-white font-semibold text-center transition shadow-lg shadow-amber-500/30 flex items-center justify-center gap-2">
+                        Cari Lowongan Kerja <i class="fa-solid fa-arrow-right text-xs"></i>
+                    </a>
+                    <a href="#layanan" class="px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold text-center transition backdrop-blur-md flex items-center justify-center gap-2">
+                        Layanan Kemitraan Hotel
+                    </a>
+                </div>
+
+                <!-- Highlight Badges -->
+                <div class="mt-12 pt-8 border-t border-white/15 grid grid-cols-3 gap-4 text-center sm:text-left">
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-bold text-amber-400 font-serif">1,500+</p>
+                        <p class="text-xs sm:text-sm text-slate-300">Staf Terluaskan</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-bold text-amber-400 font-serif">85+</p>
+                        <p class="text-xs sm:text-sm text-slate-300">Mitra Resort & Hotel</p>
+                    </div>
+                    <div>
+                        <p class="text-2xl sm:text-3xl font-bold text-amber-400 font-serif">99%</p>
+                        <p class="text-xs sm:text-sm text-slate-300">Tingkat Kepuasan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TENTANG KAMI -->
+    <section id="tentang" class="py-24 bg-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <!-- Left Image Composition -->
+                <div class="relative">
+                    <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-8 border-slate-50">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1000&q=80" alt="Resort Concierge Bali" class="w-full h-[450px] object-cover">
+                    </div>
+                    <div class="absolute -bottom-8 -right-4 sm:right-6 z-20 bg-brand-navy text-white p-6 rounded-2xl shadow-xl max-w-xs border-b-4 border-brand-gold hidden sm:block">
+                        <i class="fa-solid fa-quote-left text-3xl text-brand-gold mb-2 block"></i>
+                        <p class="text-xs text-slate-300 italic">"Menyediakan SDM unggul berbudaya ramah khas Bali dengan standar servis kelas dunia."</p>
+                    </div>
+                </div>
+
+                <!-- Right Text Content -->
+                <div>
+                    <div class="inline-block px-3.5 py-1 rounded-full bg-teal-50 text-brand-teal text-xs font-bold uppercase tracking-wider mb-3">
+                        Tentang PT Cakrawala Bali
+                    </div>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mb-6">
+                        Penyalur Tenaga Kerja Perhotelan Berlegalitas Resmi & Profesional
+                    </h2>
+                    <p class="text-slate-600 leading-relaxed mb-6">
+                        <strong>PT CAKRAWALA BALI</strong> adalah perusahaan penyedia dan penempatan tenaga kerja (Recruitment & Manpower Outsourcing Agency) terkemuka yang berpusat di Bali. Kami mengkhususkan diri dalam pengadaan sumber daya manusia berkualitas tinggi untuk sektor industri hospitality, seperti Hotel Bintang 5, Luxury Resort, Boutique Villa, Beach Club, serta Fine Dining Restaurant.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed mb-8">
+                        Dengan pemahaman mendalam tentang standar pelayanan bintang lima dan keramahan khas Bali, kami memastikan setiap kandidat melalui proses verifikasi ketat, tes kompetensi, serta pembekalan karakter hospitality.
+                    </p>
+
+                    <!-- Core Values Grid -->
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                            <div class="text-brand-gold text-lg mt-0.5"><i class="fa-solid fa-circle-check"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Resmi & Legal</h4>
+                                <p class="text-xs text-slate-500">Izin resmi kementerian ketenagakerjaan.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                            <div class="text-brand-gold text-lg mt-0.5"><i class="fa-solid fa-user-shield"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Terverifikasi</h4>
+                                <p class="text-xs text-slate-500">Background check & tes latar belakang.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                            <div class="text-brand-gold text-lg mt-0.5"><i class="fa-solid fa-certificate"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Tertatih Standar 5★</h4>
+                                <p class="text-xs text-slate-500">Keterampilan teknis & etika kerja.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                            <div class="text-brand-gold text-lg mt-0.5"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-800 text-sm">Respon Cepat</h4>
+                                <p class="text-xs text-slate-500">Solusi penggantian staff siap pakai.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LAYANAN KAMI -->
+    <section id="layanan" class="py-24 bg-slate-100/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="px-3.5 py-1 rounded-full bg-amber-100 text-brand-gold text-xs font-bold uppercase tracking-wider">Layanan Utama</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mt-3 mb-4">Solusi Penyerapan & Pengelolaan SDM Perhotelan</h2>
+                <p class="text-slate-600">Kami menawarkan berbagai skema kerjasama komprehensif untuk mendukung efisiensi operasional bisnis perhotelan Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition border border-slate-200/60 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-amber-50 text-brand-gold flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-gold group-hover:text-white transition">
+                            <i class="fa-solid fa-user-gear"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-brand-navy mb-3">Recruitment & Selection</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Proses rekrutmen lengkap mulai dari screening CV, wawancara teknis, hingga pengujian kemampuan bahasa asing sesuai kebutuhan spesifik hotel.</p>
+                    </div>
+                    <a href="#kontak" class="text-brand-gold font-semibold text-sm inline-flex items-center gap-2 hover:gap-3 transition">Konsultasi <i class="fa-solid fa-chevron-right text-xs"></i></a>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition border border-slate-200/60 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-teal-50 text-brand-teal flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-teal group-hover:text-white transition">
+                            <i class="fa-solid fa-users-rectangle"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-brand-navy mb-3">Manpower Outsourcing</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Pengelolaan tenaga kerja kontrak harian atau bulanan untuk mengakomodasi kebutuhan *high-season*, banquet acara, dan operasional harian.</p>
+                    </div>
+                    <a href="#kontak" class="text-brand-teal font-semibold text-sm inline-flex items-center gap-2 hover:gap-3 transition">Konsultasi <i class="fa-solid fa-chevron-right text-xs"></i></a>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition border border-slate-200/60 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-sky-50 text-brand-ocean flex items-center justify-center text-2xl mb-6 group-hover:bg-brand-ocean group-hover:text-white transition">
+                            <i class="fa-solid fa-user-tie"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-brand-navy mb-3">Executive Search</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Pencarian khusus posisi kunci manajerial perhotelan seperti General Manager, Resort Manager, Executive Chef, dan Head of Department.</p>
+                    </div>
+                    <a href="#kontak" class="text-brand-ocean font-semibold text-sm inline-flex items-center gap-2 hover:gap-3 transition">Konsultasi <i class="fa-solid fa-chevron-right text-xs"></i></a>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition border border-slate-200/60 flex flex-col justify-between group">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center text-2xl mb-6 group-hover:bg-purple-600 group-hover:text-white transition">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-brand-navy mb-3">Hospitality Training</h3>
+                        <p class="text-slate-600 text-sm leading-relaxed mb-6">Program pembekalan dan *grooming* berkala untuk penyegaran etika servis bintang lima, komunikasi interaktif, dan standar keamanan kerja.</p>
+                    </div>
+                    <a href="#kontak" class="text-purple-600 font-semibold text-sm inline-flex items-center gap-2 hover:gap-3 transition">Konsultasi <i class="fa-solid fa-chevron-right text-xs"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPESIALISASI TENAGA KERJA -->
+    <section id="spesialisasi" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
+                <div>
+                    <span class="px-3.5 py-1 rounded-full bg-teal-50 text-brand-teal text-xs font-bold uppercase tracking-wider">Divisi Spesialisasi</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mt-3">Kategori Tenaga Kerja Siap Kerja</h2>
+                </div>
+                <p class="text-slate-600 max-w-md mt-4 md:mt-0 text-sm">Seluruh kualifikasi staf telah tersertifikasi dan berpengalaman di properti perhotelan lokal maupun internasional.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                <!-- Category 1 -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:bg-brand-navy hover:text-white transition group cursor-default">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-white group-hover:bg-amber-500 text-brand-navy group-hover:text-white flex items-center justify-center text-xl mb-4 shadow-sm transition">
+                        <i class="fa-solid fa-concierge-bell"></i>
+                    </div>
+                    <h4 class="font-bold text-sm mb-1">Front Office</h4>
+                    <p class="text-[11px] text-slate-500 group-hover:text-slate-300">Receptionist, Butler, Guest Relation</p>
+                </div>
+
+                <!-- Category 2 -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:bg-brand-navy hover:text-white transition group cursor-default">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-white group-hover:bg-amber-500 text-brand-navy group-hover:text-white flex items-center justify-center text-xl mb-4 shadow-sm transition">
+                        <i class="fa-solid fa-utensils"></i>
+                    </div>
+                    <h4 class="font-bold text-sm mb-1">Food & Beverage</h4>
+                    <p class="text-[11px] text-slate-500 group-hover:text-slate-300">Waitstaff, Bartender, Sommelier</p>
+                </div>
+
+                <!-- Category 3 -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:bg-brand-navy hover:text-white transition group cursor-default">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-white group-hover:bg-amber-500 text-brand-navy group-hover:text-white flex items-center justify-center text-xl mb-4 shadow-sm transition">
+                        <i class="fa-solid fa-kitchen-set"></i>
+                    </div>
+                    <h4 class="font-bold text-sm mb-1">Culinary Art</h4>
+                    <p class="text-[11px] text-slate-500 group-hover:text-slate-300">Chef de Partie, Commis, Pastry</p>
+                </div>
+
+                <!-- Category 4 -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:bg-brand-navy hover:text-white transition group cursor-default">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-white group-hover:bg-amber-500 text-brand-navy group-hover:text-white flex items-center justify-center text-xl mb-4 shadow-sm transition">
+                        <i class="fa-solid fa-broom"></i>
+                    </div>
+                    <h4 class="font-bold text-sm mb-1">Housekeeping</h4>
+                    <p class="text-[11px] text-slate-500 group-hover:text-slate-300">Room Attendant, Public Area, Laundry</p>
+                </div>
+
+                <!-- Category 5 -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:bg-brand-navy hover:text-white transition group cursor-default">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-white group-hover:bg-amber-500 text-brand-navy group-hover:text-white flex items-center justify-center text-xl mb-4 shadow-sm transition">
+                        <i class="fa-solid fa-spa"></i>
+                    </div>
+                    <h4 class="font-bold text-sm mb-1">Spa & Wellness</h4>
+                    <p class="text-[11px] text-slate-500 group-hover:text-slate-300">Spa Therapist, Wellness Host</p>
+                </div>
+
+                <!-- Category 6 -->
+                <div class="p-6 rounded-2xl bg-slate-50 border border-slate-100 text-center hover:bg-brand-navy hover:text-white transition group cursor-default">
+                    <div class="w-12 h-12 mx-auto rounded-xl bg-white group-hover:bg-amber-500 text-brand-navy group-hover:text-white flex items-center justify-center text-xl mb-4 shadow-sm transition">
+                        <i class="fa-solid fa-wrench"></i>
+                    </div>
+                    <h4 class="font-bold text-sm mb-1">Engineering</h4>
+                    <p class="text-[11px] text-slate-500 group-hover:text-slate-300">Facility Technician, ME Staff</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOWONGAN KERJA TERKINI -->
+    <section id="lowongan" class="py-24 bg-slate-900 text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <span class="px-3.5 py-1 rounded-full bg-amber-500/20 text-amber-400 border border-amber-400/30 text-xs font-bold uppercase tracking-wider">Kesempatan Karir</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-3 text-white">Lowongan Kerja Perhotelan Bali</h2>
+                </div>
+                <p class="text-slate-400 max-w-md mt-4 md:mt-0 text-sm">Bergabunglah dengan mitra resort bintang lima terkemuka di kawasan Seminyak, Nusa Dua, Ubud, dan Uluwatu.</p>
+            </div>
+
+            <!-- Job Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Job Card 1 -->
+                <div class="bg-slate-800/90 rounded-2xl p-6 border border-slate-700/80 hover:border-amber-500/50 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-semibold">Full Time</span>
+                            <span class="text-xs text-slate-400"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Seminyak, Bali</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-white mb-2">Personal Villa Butler</h3>
+                        <p class="text-amber-400 font-medium text-sm mb-4">Luxury Beach Resort & Spa</p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li><i class="fa-solid fa-check text-teal-400 mr-2"></i>Pengalaman min. 2 tahun di resort 5★</li>
+                            <li><i class="fa-solid fa-check text-teal-400 mr-2"></i>Fasih berbahasa Inggris lisan/tulisan</li>
+                            <li><i class="fa-solid fa-check text-teal-400 mr-2"></i>Penampilan rapi & ramah</li>
+                        </ul>
+                    </div>
+                    <button onclick="openApplyModal('Personal Villa Butler - Seminyak')" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-sm transition">
+                        Lamar Sekarang
+                    </button>
+                </div>
+
+                <!-- Job Card 2 -->
+                <div class="bg-slate-800/90 rounded-2xl p-6 border border-slate-700/80 hover:border-amber-500/50 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-semibold">Full Time</span>
+                            <span class="text-xs text-slate-400"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Ubud, Bali</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-white mb-2">Chef De Partie (Western Cuisine)</h3>
+                        <p class="text-amber-400 font-medium text-sm mb-4">Ecolodge Boutique Resort</p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li><i class="fa-solid fa-check text-teal-400 mr-2"></i>Menguasai standar Food Safety & HACCP</li>
+                            <li><i class="fa-solid fa-check text-teal-400 mr-2"></i>Kreatif dalam kreasi menu Fine Dining</li>
+                            <li><i class="fa-solid fa-check text-teal-400 mr-2"></i>Dapat memimpin tim kitchen</li>
+                        </ul>
+                    </div>
+                    <button onclick="openApplyModal('Chef De Partie - Ubud')" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-sm transition">
+                        Lamar Sekarang
+                    </button>
+                </div>
+
+                <!-- Job Card 3 -->
+                <div class="bg-slate-800/90 rounded-2xl p-6 border border-slate-700/80 hover:border-amber-500/50 transition flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="px-3 py-1 rounded-full bg-teal-500/20 text-teal-300 text-xs font-semibold">Full Time</span>
+                            <span class="text-xs text-slate-400"><i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Nusa Dua, Bali</span>
+                        </div>
+                        <h3 class="font-serif font-bold text-xl text-white mb-2">Front Desk Agent / Receptionist</h3>
+                        <p class="text-amber-400 font-medium text-sm mb-4">International Chain Hotel</p>
+                        <ul class="text-xs text-slate-300 space-y-2 mb-6">
+                            <li><i class="fa-solid fa-check text-teal-400 mr-2"></i>Menguasai sistem PMS Opera / VHP</li>
+                            <li><i class="fa-solid fa-check text-teal-400 mr-2"></i>Komunikasi publik yang sangat baik</li>
+                            <li><i class="fa-solid fa-check text-teal-400 mr-2"></i>Bersedia kerja dalam sistem shift</li>
+                        </ul>
+                    </div>
+                    <button onclick="openApplyModal('Front Desk Agent - Nusa Dua')" class="w-full py-3 rounded-xl bg-amber-500 hover:bg-amber-600 text-slate-900 font-bold text-sm transition">
+                        Lamar Sekarang
+                    </button>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <p class="text-slate-400 text-sm mb-4">Tidak menemukan posisi yang cocok? Kirimkan CV lengkap Anda untuk data inventaris kami.</p>
+                <button onclick="openApplyModal('General Placement Application')" class="px-6 py-3 rounded-xl border border-slate-600 hover:bg-slate-800 text-white font-semibold text-sm transition inline-flex items-center gap-2">
+                    <i class="fa-solid fa-paper-plane text-amber-400"></i> Kirim Lamaran Umum
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ALASAN MEMILIH KAMI -->
+    <section class="py-24 bg-gradient-to-br from-brand-navy via-brand-teal to-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="px-3.5 py-1 rounded-full bg-amber-400/20 text-amber-300 text-xs font-bold uppercase tracking-wider">Keunggulan Utama</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-3 mb-6">Mengapa Bermitra dengan PT Cakrawala Bali?</h2>
+                    <p class="text-slate-300 leading-relaxed mb-8">
+                        Kami mengerti bahwa kualitas layanan hotel sangat bergantung pada SDM yang bertugas. Oleh karena itu, kami memberikan jaminan seleksi terbaik untuk efisiensi bisnis Anda.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 font-bold text-lg">1</div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Proses Seleksi Ketat & Terukur</h4>
+                                <p class="text-slate-300 text-sm">Wawancara kompetensi, verifikasi riwayat kerja, dan pemeriksaan latar belakang komprehensif.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 font-bold text-lg">2</div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Garansi Penggantian Staf</h4>
+                                <p class="text-slate-300 text-sm">Dukungan penggantian kandidat tanpa biaya tambahan jika perfomasi tidak memenuhi standar kesepakatan.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center shrink-0 font-bold text-lg">3</div>
+                            <div>
+                                <h4 class="font-bold text-white text-base">Kepatuhan Hukum & Ketenagakerjaan</h4>
+                                <p class="text-slate-300 text-sm">Seluruh proses kontrak dan administrasi mematuhi undang-undang ketenagakerjaan Indonesia yang berlaku.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 border border-white/20">
+                    <h3 class="font-serif font-bold text-2xl text-white mb-6 text-center">Konsultasi Kebutuhan SDM</h3>
+                    <form id="partnerForm" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-200 mb-1">Nama Perusahaan / Hotel</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm" placeholder="Contoh: Grand Hyatt Resort Bali">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-200 mb-1">Nama Penanggung Jawab / HR Manager</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm" placeholder="Nama Anda">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-200 mb-1">No. WhatsApp / Email</label>
+                            <input type="text" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm" placeholder="0812xxxxxx / hr@hotel.com">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-200 mb-1">Kebutuhan Staff</label>
+                            <textarea rows="3" required class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-400 text-sm" placeholder="Sebutkan posisi dan jumlah staf yang dibutuhkan..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-gold hover:bg-amber-600 text-white font-bold transition text-sm shadow-lg">
+                            Kirim Permintaan Kerjasama
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- KONTAK & LOKASI -->
+    <section id="kontak" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="px-3.5 py-1 rounded-full bg-teal-50 text-brand-teal text-xs font-bold uppercase tracking-wider">Hubungi Kami</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-brand-navy mt-3">Kantor Operasional Bali</h2>
+                <p class="text-slate-600 mt-2">Silakan kunjungi kantor kami atau hubungi tim customer relation kami.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Info Cards -->
+                <div class="space-y-6">
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-amber-100 text-brand-gold flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy mb-1">Alamat Utama</h4>
+                            <p class="text-slate-600 text-sm leading-relaxed">Jl. Sunset Road No. 88X, Kuta, Kabupaten Badung, Bali - 80361</p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-teal-100 text-brand-teal flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy mb-1">Telepon & WhatsApp</h4>
+                            <p class="text-slate-600 text-sm">+62 (0361) 8945-221</p>
+                            <p class="text-slate-600 text-sm">+62 812-3456-7890 (WA Hotline)</p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-sky-100 text-brand-ocean flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy mb-1">Email Resmi</h4>
+                            <p class="text-slate-600 text-sm">info@cakrawalabali.co.id</p>
+                            <p class="text-slate-600 text-sm">recruitment@cakrawalabali.co.id</p>
+                        </div>
+                    </div>
+
+                    <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80 flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl shrink-0">
+                            <i class="fa-solid fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-brand-navy mb-1">Jam Operasional</h4>
+                            <p class="text-slate-600 text-sm">Senin - Jumat: 08.30 - 17.00 WITA</p>
+                            <p class="text-slate-600 text-sm">Sabtu: 09.00 - 13.00 WITA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Google Maps Embedded Visual -->
+                <div class="lg:col-span-2 rounded-3xl overflow-hidden border border-slate-200 shadow-md h-full min-h-[350px] relative bg-slate-100">
+                    <iframe title="Lokasi PT Cakrawala Bali" class="w-full h-full min-h-[350px]" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63110.15555416298!2d115.1504144!3d-8.7042571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2409b0e5e7115%3A0x82f53443a6f1d2c!2sSunset%20Rd%2C%20Kuta%2C%20Badung%20Regency%2C%20Bali!5e0!3m2!1sen!2sid!4v1700000000000!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-navy text-white pt-16 pb-8 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+                <!-- Col 1: Brand -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-teal flex items-center justify-center text-amber-400 font-bold text-lg">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <span class="font-serif font-bold text-xl text-white">CAKRAWALA BALI</span>
+                    </div>
+                    <p class="text-slate-400 text-xs leading-relaxed">
+                        Perusahaan penyedia dan penempatan staf perhotelan profesional di Bali. Berkomitmen menghadirkan layanan SDM berkualitas unggul.
+                    </p>
+                    <div class="flex space-x-3 text-slate-400">
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-slate-900 flex items-center justify-center transition"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-slate-900 flex items-center justify-center transition"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="w-9 h-9 rounded-lg bg-slate-800 hover:bg-amber-500 hover:text-slate-900 flex items-center justify-center transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    </div>
+                </div>
+
+                <!-- Col 2: Navigation -->
+                <div>
+                    <h4 class="font-serif font-bold text-amber-400 mb-4 text-sm tracking-wider uppercase">Navigasi Cepat</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="#beranda" class="hover:text-amber-400 transition">Beranda Utama</a></li>
+                        <li><a href="#tentang" class="hover:text-amber-400 transition">Profil Perusahaan</a></li>
+                        <li><a href="#layanan" class="hover:text-amber-400 transition">Layanan Rekrutmen</a></li>
+                        <li><a href="#spesialisasi" class="hover:text-amber-400 transition">Kategori Staf</a></li>
+                        <li><a href="#lowongan" class="hover:text-amber-400 transition">Lowongan Kerja</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Divisi Staff -->
+                <div>
+                    <h4 class="font-serif font-bold text-amber-400 mb-4 text-sm tracking-wider uppercase">Divisi Tenaga Kerja</h4>
+                    <ul class="space-y-2 text-xs text-slate-300">
+                        <li><a href="#spesialisasi" class="hover:text-amber-400 transition">Front Office & Guest Relation</a></li>
+                        <li><a href="#spesialisasi" class="hover:text-amber-400 transition">Food & Beverage Service</a></li>
+                        <li><a href="#spesialisasi" class="hover:text-amber-400 transition">Executive & Commis Chef</a></li>
+                        <li><a href="#spesialisasi" class="hover:text-amber-400 transition">Housekeeping & Villa Host</a></li>
+                        <li><a href="#spesialisasi" class="hover:text-amber-400 transition">Certified Spa Therapists</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Legal & Info -->
+                <div>
+                    <h4 class="font-serif font-bold text-amber-400 mb-4 text-sm tracking-wider uppercase">Legalitas</h4>
+                    <p class="text-xs text-slate-400 mb-2">NIB: 9120109283712</p>
+                    <p class="text-xs text-slate-400 mb-4">Izin Operasional Disnaker Bali</p>
+                    <div class="p-3 rounded-xl bg-slate-800/80 border border-slate-700/60 text-[11px] text-slate-300">
+                        <i class="fa-solid fa-shield-halved text-amber-400 mr-1"></i> Terdaftar & Diawasi Dinas Tenaga Kerja Provinsi Bali.
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+                <p>© 2026 PT CAKRAWALA BALI. Hak Cipta Dilindungi Undang-Undang.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-slate-400">Kebijakan Privasi</a>
+                    <a href="#" class="hover:text-slate-400">Syarat & Ketentuan</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL FORM PENDAFTARAN / LAMARAN -->
+    <div id="applyModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4 overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative border border-slate-100 my-8">
+            <!-- Close Button -->
+            <button onclick="closeApplyModal()" class="absolute top-5 right-5 w-9 h-9 rounded-full bg-slate-100 text-slate-500 hover:bg-slate-200 flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="mb-6">
+                <span class="text-xs font-bold uppercase tracking-wider text-brand-gold">Formulir Pelamar Kerja</span>
+                <h3 class="font-serif font-bold text-2xl text-brand-navy mt-1">Kirim Lamaran Anda</h3>
+                <p class="text-slate-500 text-xs mt-1">Isi formulir di bawah ini untuk mendaftar pada posisi yang diminati.</p>
+            </div>
+
+            <form id="applicantForm" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Posisi Yang Dilamar</label>
+                    <input type="text" id="targetPosition" readonly class="w-full px-4 py-3 rounded-xl bg-slate-100 border border-slate-200 text-brand-navy font-bold text-sm">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Lengkap *</label>
+                        <input type="text" required class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold text-sm" placeholder="Sesuai KTP">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">No. WhatsApp / HP *</label>
+                        <input type="tel" required class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold text-sm" placeholder="0812xxxxxxx">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Alamat Email *</label>
+                        <input type="email" required class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold text-sm" placeholder="nama@email.com">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold text-slate-700 mb-1">Pengalaman di Perhotelan *</label>
+                        <select required class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold text-sm">
+                            <option value="">Pilih Pengalaman</option>
+                            <option value="Fresh Graduate">Fresh Graduate / DW</option>
+                            <option value="1-2 Tahun">1 - 2 Tahun</option>
+                            <option value="3-5 Tahun">3 - 5 Tahun</option>
+                            <option value="> 5 Tahun">> 5 Tahun (Senior/Supervisor)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Link Resume / CV (Google Drive / LinkedIn / Dropbox) *</label>
+                    <input type="url" required class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold text-sm" placeholder="https://drive.google.com/file/d/...">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-slate-700 mb-1">Catatan Singkat / Ringkasan Keahlian</label>
+                    <textarea rows="3" class="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold text-sm" placeholder="Ceritakan singkat latar belakang pekerjaan terakhir Anda..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-gold hover:bg-amber-600 text-white font-bold text-sm transition shadow-lg mt-2">
+                    Kirimkan Berkas Lamaran
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- CUSTOM SUCCESS NOTIFICATION MODAL -->
+    <div id="successModal" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden items-center justify-center p-4">
+        <div class="bg-white rounded-3xl max-w-sm w-full p-6 text-center shadow-2xl border border-slate-100">
+            <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-3xl mx-auto mb-4">
+                <i class="fa-solid fa-circle-check"></i>
+            </div>
+            <h3 class="font-serif font-bold text-2xl text-brand-navy mb-2">Berhasil Terkirim!</h3>
+            <p id="successMessage" class="text-slate-600 text-xs leading-relaxed mb-6">Data lamaran Anda telah masuk ke dalam sistem rekrutmen PT Cakrawala Bali. Tim HR kami akan menghubungi Anda segera.</p>
+            <button onclick="closeSuccessModal()" class="w-full py-3 rounded-xl bg-brand-navy hover:bg-slate-800 text-white font-bold text-sm transition">
+                Tutup Selesai
+            </button>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Mobile Navigation Menu Toggle
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close Mobile Menu on Click
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Modal Applicant Logic
+        const applyModal = document.getElementById('applyModal');
+        const targetPositionInput = document.getElementById('targetPosition');
+        const applicantForm = document.getElementById('applicantForm');
+        const partnerForm = document.getElementById('partnerForm');
+        const successModal = document.getElementById('successModal');
+        const successMessage = document.getElementById('successMessage');
+
+        function openApplyModal(positionName) {
+            targetPositionInput.value = positionName;
+            applyModal.classList.remove('hidden');
+            applyModal.classList.add('flex');
+        }
+
+        function closeApplyModal() {
+            applyModal.classList.remove('flex');
+            applyModal.classList.add('hidden');
+        }
+
+        function closeSuccessModal() {
+            successModal.classList.remove('flex');
+            successModal.classList.add('hidden');
+        }
+
+        // Applicant Form Submission
+        applicantForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            closeApplyModal();
+            applicantForm.reset();
+            
+            successMessage.textContent = "Berkas lamaran Anda berhasil kami terima! Tim HR PT Cakrawala Bali akan melakukan verifikasi dan menghubungi WhatsApp/Email Anda.";
+            successModal.classList.remove('hidden');
+            successModal.classList.add('flex');
+        });
+
+        // Partner Form Submission
+        partnerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            partnerForm.reset();
+            
+            successMessage.textContent = "Permintaan kerjasama berhasil dikirim! Tim Business Development PT Cakrawala Bali akan segera menghubungi pihak manajemen Anda.";
+            successModal.classList.remove('hidden');
+            successModal.classList.add('flex');
+        });
+
+        // Close Modals on Outer Click
+        applyModal.addEventListener('click', (e) => {
+            if (e.target === applyModal) closeApplyModal();
+        });
+        successModal.addEventListener('click', (e) => {
+            if (e.target === successModal) closeSuccessModal();
+        });
+    </script>
+</body>
+</html>
